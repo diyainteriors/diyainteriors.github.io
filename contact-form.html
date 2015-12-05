@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Diya Interiors - Contact Us</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1, minimum-scale=1, user-scalable=0">
+	<link href="./page.css" rel="stylesheet">
+	<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+<style>
+h1
+{
+	font:18px/1.2 'Microsoft YaHei', Arial, Sans-serif;
+	font-size : 32px;
+  font-weight : light;
+	color: #6E2D6D;
+	text-align: center;
+}
+label,a
+{
+	font:18px/1.2 'Microsoft YaHei', Arial, Sans-serif;
+	display: block;
+  text-align: center;
+  line-height: 150%;
+  font-size: .85em;
+}
+body
+{
+	text-align: center;
+	font-family: 'Microsoft YaHei', Arial, Sans-serif;
+}
+
+input
+{
+	border:2px solid #6E2D6D;
+  padding: 12px;
+}
+
+input:focus {
+    outline:none;
+    border-color:#6E2D6D;
+    box-shadow:0 0 10px #6E2D6D;
+}
+
+textarea
+{
+	border:2px solid #6E2D6D;
+	padding: 12px;
+}
+
+textarea:focus {
+    outline:none;
+    border-color:#6E2D6D;
+    box-shadow:0 0 10px #6E2D6D;
+}
+
+table{
+	align: center;
+}
+
+input[type="submit"] {
+    background: #6E2D6D;
+    color: #fff;
+    border: 0;
+    padding: 12px;
+    font-size: 18px;
+}
+
+tr.spaceUnder > td
+{
+  padding-bottom: 1.5em;
+}
+</style>
+<!-- a helper script for vaidating the form-->
+<script language="JavaScript" src="scripts/gen_validatorv31.js" type="text/javascript"></script>
+</head>
+</head>
+
+<body>
+<img src="./images/head.jpg" height="150" width="150">
+<h1>Contact us</h1>
+<br>
+<form method="POST" name="contactform" action="contact-form-handler.php">
+	<center>
+<table>
+	<tr class="spaceUnder">
+		<td><label for='name' align="center">Your Name:  </td>
+			<td>&nbsp;<td/>
+		<td><input type="text" name="name"></label></td>
+			<td>&nbsp;<td/>
+	</tr>
+	<tr class="spaceUnder">
+		<td><label for='email'>Email Address:  </td>
+			<td>&nbsp;<td/>
+		<td><input type="text" name="email"></label></td>
+			<td>&nbsp;<td/>
+	</tr>
+	<tr class="spaceUnder">
+		<td><label for='message'>Message:  </td>
+			<td>&nbsp;<td/>
+		<td><textarea name="message"></textarea></label></td>
+			<td>&nbsp;<td/>
+	</tr>
+	<tr class="spaceUnder">
+		<td colspan='5' style="text-align: center;"><input type="submit" value="Submit"></td>
+
+	</tr>
+</table>
+</center>
+</form>
+
+
+<script language="JavaScript">
+var frmvalidator  = new Validator("contactform");
+frmvalidator.addValidation("name","req","Please provide your name");
+frmvalidator.addValidation("email","req","Please provide your email");
+frmvalidator.addValidation("email","email","Please enter a valid email address");
+</script>
+</body>
+</html>
