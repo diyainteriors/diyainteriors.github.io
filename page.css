@@ -430,6 +430,12 @@ body{
     color:#3C8892;
 }
 
+#ourwork .electric{
+    background: #111 url(./images/lighting1.jpg) no-repeat;
+    background-size: cover;
+    color:#1B5BC0;
+}
+
 #gallery{
     background-color: #111;
     color:#fff;
@@ -485,7 +491,11 @@ body{
     /*background-size: auto 100%;*/
     background-size: 100%;
 }
-
+#contact ul>li>a.facebook{
+    background: center url(./images/facebook.png) no-repeat;
+    /*background-size: auto 100%;*/
+    background-size: 100%;
+}
 
 #contact footer{
     position: absolute;
@@ -550,6 +560,12 @@ body{
     vertical-align: top;
 }
 .us .fp-tableCell{
+    padding-top: 20px;
+    padding-right: 50px;
+    text-align: right;
+    vertical-align: top;
+}
+.electric .fp-tableCell{
     padding-top: 20px;
     padding-right: 50px;
     text-align: right;
@@ -714,4 +730,6 @@ body{
     border-color: #6e2d7a;
     text-decoration: none;
     border-bottom-color: #6e1f4f;
+    border-color:#6E2D6D;
+    box-shadow:0 0 10px #6E2D6D;
 }
