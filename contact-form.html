@@ -90,12 +90,11 @@ select:hover {
 </style>
 <!-- a helper script for vaidating the form-->
 <script language="JavaScript" src="scripts/gen_validatorv31.js" type="text/javascript"></script>
-</head>
+
 </head>
 
 <body>
-<img src="./images/head-trans.png" height="100" width="100">
-<h1>Contact us</h1>
+<h1> <img src="./images/head-trans.png" width="75" height="75" align="center">Contact us</img></h1>
 <br>
 <form method="POST" name="contactform" action="contact-form-handler.php">
 	<center>
@@ -103,19 +102,19 @@ select:hover {
 	<tr class="spaceUnder">
 		<td><label for='name' align="center">Your Name:  </td>
 			<td>&nbsp;<td/>
-		<td><input type="text" name="name" size="35"></label></td>
+		<td><input type="text" id="name" name="name" size="35"></label></td>
 			<td>&nbsp;<td/>
 	</tr>
 	<tr class="spaceUnder">
 		<td><label for='email'>Email Address:  </td>
 			<td>&nbsp;<td/>
-		<td><input type="text" name="email" size="35"></label></td>
+		<td><input type="text" id="email" name="email" size="35"></label></td>
 			<td>&nbsp;<td/>
 	</tr>
 	<tr class="spaceUnder">
 		<td><label for='mobile'>Mobile No.:  </td>
 			<td>&nbsp;<td/>
-		<td><input type="text" name="mobile" maxlength="13" size="35"></label></td>
+		<td><input type="text" id="mobileNo" name="mobile" maxlength="13" size="35"></label></td>
 			<td>&nbsp;<td/>
 	</tr>
 	<tr class="spaceUnder">
@@ -134,11 +133,11 @@ select:hover {
 	<tr class="spaceUnder">
 		<td><label for='message'>Message:  </td>
 			<td>&nbsp;<td/>
-		<td><textarea name="message" rows="5" cols="33"></textarea></label></td>
+		<td><textarea name="message" id="message" rows="5" cols="33"></textarea></label></td>
 			<td>&nbsp;<td/>
 	</tr>
 	<tr class="spaceUnder">
-		<td colspan='5' style="text-align: center;"><input type="submit" value="Enquire"></td>
+		<td colspan='5' style="text-align: center;"><input type="submit" id="contactformbtn" value="Enquire" onclick="return validateForm();"></td>
 	</tr>
 </table>
 </center>
@@ -150,6 +149,100 @@ var frmvalidator  = new Validator("contactform");
 frmvalidator.addValidation("name","req","Please provide your name");
 frmvalidator.addValidation("email","req","Please provide your email");
 frmvalidator.addValidation("email","email","Please enter a valid email address");
+$("#contactformbtn").on('click', function(){
+	alert('asd');
+});
+
+function validateEmail(email)
+{
+    var splitted = email.match("^(.+)@(.+)$");
+    if(splitted == null) return false;
+    if(splitted[1] != null )
+    {
+      var regexp_user=/^\"?[\w-_\.]*\"?$/;
+      if(splitted[1].match(regexp_user) == null) return false;
+    }
+    if(splitted[2] != null)
+    {
+      var regexp_domain=/^[\w-\.]*\.[A-Za-z]{2,4}$/;
+      if(splitted[2].match(regexp_domain) == null)
+      {
+	    var regexp_ip =/^\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\]$/;
+	    if(splitted[2].match(regexp_ip) == null) return false;
+      }// if
+      return true;
+    }
+return false;
+}
+
+function validateForm() {
+	// alert('alert');
+
+	// Name validation
+	var name = document.getElementById("name");
+	if(name.value.length < 2) {
+		alert("Please provide your valid name!");
+		return false;
+	}
+
+	//
+	var email = document.getElementById("email");
+	if(!validateEmail(email.value)) {
+		alert("Please enter a valid email address!");
+		return false;
+	}
+
+	var reg = new RegExp(/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/);
+	// alert('alert2');
+	var mobile = document.getElementById("mobileNo");
+	// alert('mobile: ' + mobile.value);
+	var flag = reg.test(mobile.value);
+	if(flag == false) {
+		alert("Please enter a valid mobile number!");
+		return false;
+	}
+
+	// alert('after mobile test');
+	var citySelect = document.getElementById("city");
+	if(citySelect.value == "select") {
+		alert("Please select a city!");
+		return false;
+	}
+
+	// Message validation
+	var msg = document.getElementById("message");
+	if(msg.value.length < 10) {
+		alert("Please describe your requirement in minimum 5 words");
+		return false;
+	}
+	else {
+		countTotal = cword(msg.value);
+		if(countTotal < 5)
+		{
+			alert("Please describe your requirement in minimum 5 words");
+			return false;
+		}
+	}
+
+
+	return true;
+}
+
+function cword(w) {
+
+    var count = 0;
+    var words = w.split(" ");
+
+    for (i = 0; i < words.length; i++) {
+        // inner loop -- do the count
+        if (words[i] != "" && isNaN(words[i]) && words[i]!=words[i+1])
+            count += 1;
+    }
+
+
+    return (count);
+}
+
 </script>
 </body>
 </html>

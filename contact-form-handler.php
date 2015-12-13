@@ -1,10 +1,9 @@
 <?php
 $errors = '';
-$myemail = 'chinmay3.14@hotmail.com';
+$myemail = 'deepakpai@diyainteriors.co.in';
 if(empty($_POST['name'])   ||
    empty($_POST['email'])  ||
    empty($_POST['message'])||
-   empty($_POST['mobile']) ||
    empty($_POST['city']))
 {
     $errors .= "\n Error: all fields are required";
@@ -17,14 +16,10 @@ $mobile = $_POST['mobile'];
 $city = $_POST['city'];
 
 $email = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/';
-$mob="/^[1-9][0-9]*$/";
 
 if (!preg_match($email, $email_address))
 {
     $errors .= "\n Error: Invalid email address";
-}
-elseif (!preg_match($mob, $mobile)) {
-    $errors .= "\n Error: Invalid phone number";
 }
 elseif ($city== 'select') {
     $errors .= "\n Error: Please select a valid city";
@@ -41,15 +36,18 @@ if( empty($errors))
 	$headers = "From: $myemail\n";
 	$headers .= "Reply-To: $email_address";
 
-	mail($to,$email_subject,$email_body,$headers);
+	$redir = mail($to,$email_subject,$email_body,$headers);
 	//redirect to the 'thank you' page
-	header('Location: contact-submitted.html');
+  if($redir == true)
+  {
+    header('Location: contact-submitted.html');
+  }
 }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>Contact form handler</title>
+	<title>Contact Us</title>
 </head>
 
 <body>

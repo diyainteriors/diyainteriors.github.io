@@ -6,13 +6,13 @@
 	You can freely use this script in your Web pages.
 	You may adapt this script for your own needs, provided these opening credit
     lines are kept intact.
-		
+
 	The Form validation script is distributed free from JavaScript-Coder.com
 	For updates, please visit:
 	http://www.javascript-coder.com/html-form/javascript-form-validation.phtml
-	
+
 	Questions & comments please send to form.val at javascript-coder.com
-  -------------------------------------------------------------------------  
+  -------------------------------------------------------------------------
 */
 function Validator(frmname)
 {
@@ -101,9 +101,9 @@ function form_submit_handler()
 	  str =" var ret = "+this.addnlvalidation+"()";
 	  eval(str);
 
-     if(!ret) 
+     if(!ret)
      {
-       bRet=false; 
+       bRet=false;
      }
 
 	}
@@ -121,7 +121,7 @@ function add_validation(itemname,descriptor,errstr)
 	var condition = null;
 	if(arguments.length > 3)
 	{
-	 condition = arguments[3]; 
+	 condition = arguments[3];
 	}
   if(!this.formobj)
 	{
@@ -133,7 +133,7 @@ function add_validation(itemname,descriptor,errstr)
     //for radio button; don't do for 'select' item
 	{
 		itemobj = itemobj[0];
-	}	
+	}
   if(!itemobj)
 	{
 		alert("Error: Couldnot get the input object named: "+itemname);
@@ -181,12 +181,12 @@ function edh_EnableOnPageDisplay(single_box)
 	}
 	else
 	{
-		this.msgdisplay = new DivMsgDisplayer();		
+		this.msgdisplay = new DivMsgDisplayer();
 	}
 }
 function edh_ShowMsg(msg,input_element)
 {
-	
+
    var objmsg = new Array();
    objmsg["input_element"] = input_element;
    objmsg["msg"] =  msg;
@@ -213,7 +213,7 @@ function alert_showmsg(msgs)
         }
         whole_msg += msgs[m]["msg"] + "\n";
     }
-	
+
     alert(whole_msg);
 
     if(null != first_elmnt)
@@ -281,7 +281,7 @@ function div_clearmsg(msgs)
 }
 function element_div_name(input_element)
 {
-  var divname = input_element.form._sfm_form_name + "_" + 
+  var divname = input_element.form._sfm_form_name + "_" +
                    input_element.name + "_errorloc";
 
   divname = divname.replace(/[\[\]]/gi,"");
@@ -332,7 +332,7 @@ function show_div_msg(divname,msgstring)
         if(!divlayer){return;}
 		divlayer.innerHTML =msgstring;
 	}
-	divlayer.style.visibility="visible";	
+	divlayer.style.visibility="visible";
 }
 
 function ValidationDesc(inputitem,desc,error,condition)
@@ -372,7 +372,7 @@ function ValidationSet(inputitem,msgs_together)
 }
 function add_validationdesc(desc,error,condition)
 {
-  this.vSet[this.vSet.length]= 
+  this.vSet[this.vSet.length]=
   new ValidationDesc(this.itemobj,desc,error,condition);
 }
 function vset_validate()
@@ -400,7 +400,7 @@ function validateEmail(email)
     if(splitted[2] != null)
     {
       var regexp_domain=/^[\w-\.]*\.[A-Za-z]{2,4}$/;
-      if(splitted[2].match(regexp_domain) == null) 
+      if(splitted[2].match(regexp_domain) == null)
       {
 	    var regexp_ip =/^\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\]$/;
 	    if(splitted[2].match(regexp_ip) == null) return false;
@@ -439,7 +439,7 @@ function IsCheckSelected(objValue,chkValue)
 		{
 			selected=true;
 		}//if
-	}//else	
+	}//else
 
 	return selected;
 }
@@ -450,12 +450,12 @@ function TestDontSelectChk(objValue,chkValue,strError)
 
 	if(pass==false)
 	{
-     if(!strError || strError.length ==0) 
-        { 
-        	strError = "Can't Proceed as you selected "+objValue.name;  
-        }//if			  
+     if(!strError || strError.length ==0)
+        {
+        	strError = "Can't Proceed as you selected "+objValue.name;
+        }//if
 	  sfm_show_error_msg(strError,objValue);
-	  
+
 	}
     return pass;
 }
@@ -467,12 +467,12 @@ function TestShouldSelectChk(objValue,chkValue,strError)
 
 	if(pass==false)
 	{
-     if(!strError || strError.length ==0) 
-        { 
-        	strError = "You should select "+objValue.name;  
-        }//if			  
+     if(!strError || strError.length ==0)
+        {
+        	strError = "You should select "+objValue.name;
+        }//if
 	  sfm_show_error_msg(strError,objValue);
-	  
+
 	}
     return pass;
 }
@@ -481,147 +481,147 @@ function TestRequiredInput(objValue,strError)
  var ret = true;
  var val = objValue.value;
  val = val.replace(/^\s+|\s+$/g,"");//trim
-    if(eval(val.length) == 0) 
-    { 
-       if(!strError || strError.length ==0) 
-       { 
-         strError = objValue.name + " : Required Field"; 
-       }//if 
-       sfm_show_error_msg(strError,objValue); 
-       ret=false; 
-    }//if 
+    if(eval(val.length) == 0)
+    {
+       if(!strError || strError.length ==0)
+       {
+         strError = objValue.name + " : Required Field";
+       }//if
+       sfm_show_error_msg(strError,objValue);
+       ret=false;
+    }//if
 return ret;
 }
 function TestMaxLen(objValue,strMaxLen,strError)
 {
  var ret = true;
-    if(eval(objValue.value.length) > eval(strMaxLen)) 
-    { 
-      if(!strError || strError.length ==0) 
-      { 
-        strError = objValue.name + " : "+ strMaxLen +" characters maximum "; 
-      }//if 
-      sfm_show_error_msg(strError,objValue); 
-      ret = false; 
-    }//if 
+    if(eval(objValue.value.length) > eval(strMaxLen))
+    {
+      if(!strError || strError.length ==0)
+      {
+        strError = objValue.name + " : "+ strMaxLen +" characters maximum ";
+      }//if
+      sfm_show_error_msg(strError,objValue);
+      ret = false;
+    }//if
 return ret;
 }
 function TestMinLen(objValue,strMinLen,strError)
 {
  var ret = true;
-    if(eval(objValue.value.length) <  eval(strMinLen)) 
-    { 
-      if(!strError || strError.length ==0) 
-      { 
-        strError = objValue.name + " : " + strMinLen + " characters minimum  "; 
-      }//if               
-      sfm_show_error_msg(strError,objValue); 
-      ret = false;   
-    }//if 
+    if(eval(objValue.value.length) <  eval(strMinLen))
+    {
+      if(!strError || strError.length ==0)
+      {
+        strError = objValue.name + " : " + strMinLen + " characters minimum  ";
+      }//if
+      sfm_show_error_msg(strError,objValue);
+      ret = false;
+    }//if
 return ret;
 }
 function TestInputType(objValue,strRegExp,strError,strDefaultError)
 {
    var ret = true;
 
-    var charpos = objValue.value.search(strRegExp); 
-    if(objValue.value.length > 0 &&  charpos >= 0) 
-    { 
-     if(!strError || strError.length ==0) 
-      { 
+    var charpos = objValue.value.search(strRegExp);
+    if(objValue.value.length > 0 &&  charpos >= 0)
+    {
+     if(!strError || strError.length ==0)
+      {
         strError = strDefaultError;
-      }//if 
-      sfm_show_error_msg(strError,objValue); 
-      ret = false; 
-    }//if 
+      }//if
+      sfm_show_error_msg(strError,objValue);
+      ret = false;
+    }//if
  return ret;
 }
 function TestEmail(objValue,strError)
 {
 var ret = true;
-     if(objValue.value.length > 0 && !validateEmail(objValue.value)	 ) 
-     { 
-       if(!strError || strError.length ==0) 
-       { 
-          strError = objValue.name+": Enter a valid Email address "; 
-       }//if                                               
-       sfm_show_error_msg(strError,objValue); 
-       ret = false; 
-     }//if 
+     if(objValue.value.length > 0 && !validateEmail(objValue.value)	 )
+     {
+       if(!strError || strError.length ==0)
+       {
+          strError = objValue.name+": Enter a valid Email address ";
+       }//if
+       sfm_show_error_msg(strError,objValue);
+       ret = false;
+     }//if
 return ret;
 }
 function TestLessThan(objValue,strLessThan,strError)
 {
 var ret = true;
-	  if(isNaN(objValue.value)) 
-	  { 
-	    sfm_show_error_msg(objValue.name +": Should be a number ",objValue); 
-	    ret = false; 
-	  }//if 
+	  if(isNaN(objValue.value))
+	  {
+	    sfm_show_error_msg(objValue.name +": Should be a number ",objValue);
+	    ret = false;
+	  }//if
 	  else
-	  if(eval(objValue.value) >=  eval(strLessThan)) 
-	  { 
-	    if(!strError || strError.length ==0) 
-	    { 
-	      strError = objValue.name + " : value should be less than "+ strLessThan; 
-	    }//if               
-	    sfm_show_error_msg(strError,objValue); 
-	    ret = false;                 
-	   }//if   
-return ret;          
+	  if(eval(objValue.value) >=  eval(strLessThan))
+	  {
+	    if(!strError || strError.length ==0)
+	    {
+	      strError = objValue.name + " : value should be less than "+ strLessThan;
+	    }//if
+	    sfm_show_error_msg(strError,objValue);
+	    ret = false;
+	   }//if
+return ret;
 }
 function TestGreaterThan(objValue,strGreaterThan,strError)
 {
 var ret = true;
-     if(isNaN(objValue.value)) 
-     { 
-       sfm_show_error_msg(objValue.name+": Should be a number ",objValue); 
-       ret = false; 
-     }//if 
+     if(isNaN(objValue.value))
+     {
+       sfm_show_error_msg(objValue.name+": Should be a number ",objValue);
+       ret = false;
+     }//if
 	 else
-     if(eval(objValue.value) <=  eval(strGreaterThan)) 
-      { 
-        if(!strError || strError.length ==0) 
-        { 
-          strError = objValue.name + " : value should be greater than "+ strGreaterThan; 
-        }//if               
-        sfm_show_error_msg(strError,objValue);  
+     if(eval(objValue.value) <=  eval(strGreaterThan))
+      {
+        if(!strError || strError.length ==0)
+        {
+          strError = objValue.name + " : value should be greater than "+ strGreaterThan;
+        }//if
+        sfm_show_error_msg(strError,objValue);
         ret = false;
-      }//if  
-return ret;           
+      }//if
+return ret;
 }
 function TestRegExp(objValue,strRegExp,strError)
 {
 var ret = true;
-    if( objValue.value.length > 0 && 
-        !objValue.value.match(strRegExp) ) 
-    { 
-      if(!strError || strError.length ==0) 
-      { 
-        strError = objValue.name+": Invalid characters found "; 
-      }//if                                                               
-      sfm_show_error_msg(strError,objValue); 
-      ret = false;                   
-    }//if 
+    if( objValue.value.length > 0 &&
+        !objValue.value.match(strRegExp) )
+    {
+      if(!strError || strError.length ==0)
+      {
+        strError = objValue.name+": Invalid characters found ";
+      }//if
+      sfm_show_error_msg(strError,objValue);
+      ret = false;
+    }//if
 return ret;
 }
 function TestDontSelect(objValue,dont_sel_index,strError)
 {
 var ret = true;
-    if(objValue.selectedIndex == null) 
-    { 
-      sfm_show_error_msg("ERROR: dontselect command for non-select Item"); 
-      ret =  false; 
-    } 
-    if(objValue.selectedIndex == eval(dont_sel_index)) 
-    { 
-     if(!strError || strError.length ==0) 
-      { 
-      strError = objValue.name+": Please Select one option "; 
-      }//if                                                               
-      sfm_show_error_msg(strError,objValue); 
-      ret =  false;                                   
-     } 
+    if(objValue.selectedIndex == null)
+    {
+      sfm_show_error_msg("ERROR: dontselect command for non-select Item");
+      ret =  false;
+    }
+    if(objValue.selectedIndex == eval(dont_sel_index))
+    {
+     if(!strError || strError.length ==0)
+      {
+      strError = objValue.name+": Please Select one option ";
+      }//if
+      sfm_show_error_msg(strError,objValue);
+      ret =  false;
+     }
 return ret;
 }
 function TestSelectOneRadio(objValue,strError)
@@ -638,118 +638,118 @@ function TestSelectOneRadio(objValue,strError)
 	}
 	if(false == one_selected)
 	{
-      if(!strError || strError.length ==0) 
+      if(!strError || strError.length ==0)
        {
 	    strError = "Please select one option from "+objValue.name;
-	   }	
+	   }
 	  sfm_show_error_msg(strError,objValue);
 	}
 return one_selected;
 }
 
-function validateInput(strValidateStr,objValue,strError) 
-{ 
+function validateInput(strValidateStr,objValue,strError)
+{
     var ret = true;
-    var epos = strValidateStr.search("="); 
-    var  command  = ""; 
-    var  cmdvalue = ""; 
-    if(epos >= 0) 
-    { 
-     command  = strValidateStr.substring(0,epos); 
-     cmdvalue = strValidateStr.substr(epos+1); 
-    } 
-    else 
-    { 
-     command = strValidateStr; 
-    } 
-    switch(command) 
-    { 
-        case "req": 
-        case "required": 
-         { 
+    var epos = strValidateStr.search("=");
+    var  command  = "";
+    var  cmdvalue = "";
+    if(epos >= 0)
+    {
+     command  = strValidateStr.substring(0,epos);
+     cmdvalue = strValidateStr.substr(epos+1);
+    }
+    else
+    {
+     command = strValidateStr;
+    }
+    switch(command)
+    {
+        case "req":
+        case "required":
+         {
 		   ret = TestRequiredInput(objValue,strError)
-           break;             
-         }//case required 
-        case "maxlength": 
-        case "maxlen": 
-          { 
+           break;
+         }//case required
+        case "maxlength":
+        case "maxlen":
+          {
 			 ret = TestMaxLen(objValue,cmdvalue,strError)
-             break; 
-          }//case maxlen 
-        case "minlength": 
-        case "minlen": 
-           { 
+             break;
+          }//case maxlen
+        case "minlength":
+        case "minlen":
+           {
 			 ret = TestMinLen(objValue,cmdvalue,strError)
-             break; 
-            }//case minlen 
-        case "alnum": 
-        case "alphanumeric": 
-           { 
-				ret = TestInputType(objValue,"[^A-Za-z0-9]",strError, 
+             break;
+            }//case minlen
+        case "alnum":
+        case "alphanumeric":
+           {
+				ret = TestInputType(objValue,"[^A-Za-z0-9]",strError,
 						objValue.name+": Only alpha-numeric characters allowed ");
-				break; 
+				break;
            }
-        case "alnum_s": 
-        case "alphanumeric_space": 
-           { 
-				ret = TestInputType(objValue,"[^A-Za-z0-9\\s]",strError, 
+        case "alnum_s":
+        case "alphanumeric_space":
+           {
+				ret = TestInputType(objValue,"[^A-Za-z0-9\\s]",strError,
 						objValue.name+": Only alpha-numeric characters and space allowed ");
-				break; 
-           }		   
-        case "num": 
-        case "numeric": 
-           { 
-                ret = TestInputType(objValue,"[^0-9]",strError, 
+				break;
+           }
+        case "num":
+        case "numeric":
+           {
+                ret = TestInputType(objValue,"[^0-9]",strError,
 						objValue.name+": Only digits allowed ");
-                break;               
+                break;
            }
-        case "dec": 
-        case "decimal": 
-           { 
-                ret = TestInputType(objValue,"[^0-9\.]",strError, 
+        case "dec":
+        case "decimal":
+           {
+                ret = TestInputType(objValue,"[^0-9\.]",strError,
 						objValue.name+": Only numbers allowed ");
-                break;               
+                break;
            }
-        case "alphabetic": 
-        case "alpha": 
-           { 
-                ret = TestInputType(objValue,"[^A-Za-z]",strError, 
+        case "alphabetic":
+        case "alpha":
+           {
+                ret = TestInputType(objValue,"[^A-Za-z]",strError,
 						objValue.name+": Only alphabetic characters allowed ");
-                break; 
+                break;
            }
-        case "alphabetic_space": 
-        case "alpha_s": 
-           { 
-                ret = TestInputType(objValue,"[^A-Za-z\\s]",strError, 
+        case "alphabetic_space":
+        case "alpha_s":
+           {
+                ret = TestInputType(objValue,"[^A-Za-z\\s]",strError,
 						objValue.name+": Only alphabetic characters and space allowed ");
-                break; 
+                break;
            }
-        case "email": 
-          { 
+        case "email":
+          {
 			   ret = TestEmail(objValue,strError);
-               break; 
+               break;
           }
-        case "lt": 
-        case "lessthan": 
-         { 
+        case "lt":
+        case "lessthan":
+         {
     	      ret = TestLessThan(objValue,cmdvalue,strError);
-              break; 
+              break;
          }
-        case "gt": 
-        case "greaterthan": 
-         { 
+        case "gt":
+        case "greaterthan":
+         {
 			ret = TestGreaterThan(objValue,cmdvalue,strError);
-            break; 
-         }//case greaterthan 
-        case "regexp": 
-         { 
+            break;
+         }//case greaterthan
+        case "regexp":
+         {
 			ret = TestRegExp(objValue,cmdvalue,strError);
-           break; 
+           break;
          }
-        case "dontselect": 
-         { 
+        case "dontselect":
+         {
 			 ret = TestDontSelect(objValue,cmdvalue,strError)
-             break; 
+             break;
          }
 		case "dontselectchk":
 		{
@@ -765,8 +765,8 @@ function validateInput(strValidateStr,objValue,strError)
 		{
 			ret = TestSelectOneRadio(objValue,strError);
 		    break;
-		}		 
-    }//switch 
+		}
+    }//switch
 	return ret;
 }
 function VWZ_IsListItemSelected(listname,value)
@@ -774,7 +774,7 @@ function VWZ_IsListItemSelected(listname,value)
  for(var i=0;i < listname.options.length;i++)
  {
   if(listname.options[i].selected == true &&
-   listname.options[i].value == value) 
+   listname.options[i].value == value)
    {
      return true;
    }
@@ -787,10 +787,10 @@ function VWZ_IsChecked(objcheck,value)
  {
      for(var c=0;c < objcheck.length;c++)
      {
-       if(objcheck[c].checked == "1" && 
+       if(objcheck[c].checked == "1" &&
 	     objcheck[c].value == value)
        {
-        return true; 
+        return true;
        }
      }
  }
@@ -798,8 +798,8 @@ function VWZ_IsChecked(objcheck,value)
  {
   if(objcheck.checked == "1" )
    {
-    return true; 
-   }    
+    return true;
+   }
  }
  return false;
 }
